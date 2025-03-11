@@ -5,7 +5,7 @@ import Detail from './components/Detail/Detail'
 import Form from './components/Form/Form'
 import Error404 from './components/Error404/Error404'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
-import { use, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
 
