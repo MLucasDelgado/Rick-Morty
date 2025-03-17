@@ -3,14 +3,18 @@ import Nav from './components/Nav/Nav'
 import About from './components/About/About'
 import Detail from './components/Detail/Detail'
 import Form from './components/Form/Form'
+import Favorites from './components/Favorites/Favorites'
 import Error404 from './components/Error404/Error404'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, use } from 'react'
+import { useDispatch } from 'react-redux'
+import { removeFav } from './redux/actions/actions'
 import axios from 'axios'
 import './App.css'
 
 function App() {
 
+  const dispatch = useDispatch()
   // Acceso al formulario
   const [access, setAccess] = useState(false);
 
@@ -77,6 +81,7 @@ function App() {
 
   const onClose = (idEstado) => {
     const idParcheado = Number(idEstado);
+    dispatch(removeFav(idParcheado))
 
     const nuevosPersonajes = characters.filter((character) => character.id !== idParcheado);
 
@@ -103,6 +108,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
         <Route path='/detail/:id' element={<Detail />} />
+        <Route path='/favorites' element={<Favorites onClose={onClose}/>}/>
         <Route path='*' element={<Error404 />} />
       </Routes>
 
