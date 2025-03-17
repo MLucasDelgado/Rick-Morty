@@ -11,6 +11,9 @@ const Nav = ({ onSearch, PersonajeRandom, logOut }) => {
             <button>
                 <Link to='/home'>Home</Link>
             </button>
+            <button>
+                <Link to='/favorites'>Favorites</Link>
+            </button>
             <SearchBar onSearch={onSearch} />
             <button onClick={() => PersonajeRandom()}>Random</button>
 
