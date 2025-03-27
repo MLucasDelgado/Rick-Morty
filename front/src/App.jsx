@@ -59,7 +59,7 @@ function App() {
   };
 
   const onSearch = (id) => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
       if (data.name) {
         setCharacters((oldChars) => {
           // Verificamos si el personaje ya existe en el estado
@@ -90,7 +90,7 @@ function App() {
 
   const PersonajeRandom = () => {
     const idRandom = Math.floor(Math.random() * 826) + 1
-    axios(`https://rickandmortyapi.com/api/character/${idRandom}`).then(({ data }) => {
+    axios(`http://localhost:3001/rickandmorty/character/${idRandom}`).then(({ data }) => {
       if (data.name) {
         setCharacters((oldChars) => [...oldChars, data])
       }
