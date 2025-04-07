@@ -13,7 +13,7 @@ const Favorites = ({onClose}) => {
                 status={favorite.status}
                 species={favorite.species}
                 gender={favorite.gender}
-                origin={favorite.origin.name}
+                origin={favorite?.origin?.name}
                 image={favorite.image}
                 onClose={onClose}
             />
