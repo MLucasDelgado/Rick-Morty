@@ -18,18 +18,18 @@ function App() {
   // Acceso al formulario
   const [access, setAccess] = useState(false);
 
-  const EMAIL = 'lucas@gmail.com'
-  const PASSWORD = 'lucas123'
-
   const navigate = useNavigate()
 
   const login = (userData) => {
-    if (userData.email === EMAIL && userData.password === PASSWORD) {
-      setAccess(true)
-      navigate('/home')
-      return true
-    }
-    return false
+    // userdata son los datos del formulario
+    const { email, password } = userData;
+    const URL = 'http://localhost:3001/rickandmorty/login/';
+    axios(URL + `?email=${email}&password=${password}`)
+    .then(({ data }) => {
+       const { access } = data;
+       setAccess(data);
+       access && navigate('/home');
+    });
   }
 
   const logOut = () => {
